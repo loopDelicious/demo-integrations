@@ -1,0 +1,106 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "items",
+    "version": "2021-09-15T15:36:36Z"
+  },
+  "servers": [
+    {
+      "url": "https://hoi1z9iuac.execute-api.ap-south-1.amazonaws.com/{basePath}",
+      "variables": {
+        "basePath": {
+          "default": "prod"
+        }
+      }
+    }
+  ],
+  "paths": {
+    "/items": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Items"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Item"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Item": {
+        "title": "Item",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "ID of the item"
+          },
+          "price": {
+            "type": "number",
+            "description": "Price of the item"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the item"
+          }
+        }
+      },
+      "Items": {
+        "title": "Items",
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "description": "ID of the item"
+            },
+            "price": {
+              "type": "number",
+              "description": "Price of the item"
+            },
+            "name": {
+              "type": "string",
+              "description": "Name of the item"
+            }
+          }
+        }
+      },
+      "PostResponse": {
+        "title": "PostResponse",
+        "type": "string"
+      }
+    }
+  }
+}
